@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
         btConvert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                char[] text = etText.getText().toString().toCharArray();
-                char[] filter = etFilter.getText().toString().toCharArray();
-                anagramText = Reverse.reverseString(text,filter);
+                String text = etText.getText().toString();
+                String filter = etFilter.getText().toString();
+                anagramText = Reverse.getReverseString(text,filter);
                 tvAnagram.setText(anagramText);
             }
         });

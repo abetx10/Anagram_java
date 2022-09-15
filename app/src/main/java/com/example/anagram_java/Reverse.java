@@ -1,25 +1,25 @@
 package com.example.anagram_java;
 
 public class Reverse {
-    public static String reverseString(char[] str, char[] filterStr) {
-        if (str.length == 0) {
-            return null;
+    public static String getReverseString(String text, String strFilter){
+        String resultWord = "";
+        String result = "";
+        for (String word : text.split(" "))
+        {
+            resultWord = reverseWord(word.toCharArray(), strFilter.toCharArray()) + " ";
+            result += resultWord;
 
-        } else if (filterStr.length == 0) {
-            return filterIsEmpty(str);
-
-        } else {
-            return filterIsFill(str, filterStr);
         }
+        return result.trim();
     }
-
-    public static String filterIsEmpty(char[] str) {
+    public static String reverseWord(char[] str, char[] strFilter) {
         int right = str.length - 1, left = 0;
 
         while (left < right) {
-            if (!Character.isAlphabetic(str[left])) left++;
 
-            else if (!Character.isAlphabetic(str[right])) right--;
+            if (isCharacterIgnored(str[left], strFilter)) left++;
+
+            else if (isCharacterIgnored(str[right], strFilter)) right--;
 
             else {
                 char tmp = str[left];
@@ -32,25 +32,21 @@ public class Reverse {
         return String.valueOf(str);
     }
 
-    public static String filterIsFill(char[] str, char[] filterStr) {
-        int right = str.length - 1, left = 0;
+    public static Boolean isCharacterIgnored(char str, char[] strFilter) {
+        boolean check = false;
 
-        while (left < right) {
-            for (char c : filterStr) {
-                if (c == str[left]) left++;
+        if (strFilter.length == 0) {
+            if (!Character.isAlphabetic(str))
+                check = true;
 
-                else if (c == str[right]) right--;
+        } else {
 
-                else {
-                    char tmp = str[left];
-                    str[left] = str[right];
-                    str[right] = tmp;
-                    left++;
-                    right--;
-                }
+            for (char c : strFilter) {
+                if (str == c)
+                    check = true;
             }
         }
-        return String.valueOf(str);
+        return check;
     }
 
 }
