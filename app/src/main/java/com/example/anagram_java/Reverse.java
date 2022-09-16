@@ -8,19 +8,16 @@ public class Reverse {
         {
             resultWord = reverseWord(word.toCharArray(), strFilter.toCharArray()) + " ";
             result += resultWord;
-
         }
         return result.trim();
     }
+
     public static String reverseWord(char[] str, char[] strFilter) {
         int right = str.length - 1, left = 0;
 
         while (left < right) {
-
             if (isCharacterIgnored(str[left], strFilter)) left++;
-
             else if (isCharacterIgnored(str[right], strFilter)) right--;
-
             else {
                 char tmp = str[left];
                 str[left] = str[right];
@@ -40,7 +37,6 @@ public class Reverse {
                 check = true;
 
         } else {
-
             for (char c : strFilter) {
                 if (str == c)
                     check = true;
@@ -48,6 +44,4 @@ public class Reverse {
         }
         return check;
     }
-
 }
-

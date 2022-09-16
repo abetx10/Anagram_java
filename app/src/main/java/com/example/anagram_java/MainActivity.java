@@ -9,44 +9,44 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-    String anagramText;
-    TextView tvAnagram;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String KEY_ANAGRAM = "anagram_text";
+    private TextView mAnagramTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EditText etText = findViewById(R.id.et_text);
-        EditText etFilter = findViewById(R.id.et_filter);
+
         Button btConvert = findViewById(R.id.btConvert);
-        tvAnagram = findViewById(R.id.tv_anagram);
+        mAnagramTv = findViewById(R.id.tv_anagram);
 
+        btConvert.setOnClickListener(this);
+    }
 
-        btConvert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String text = etText.getText().toString();
-                String filter = etFilter.getText().toString();
-                anagramText = Reverse.getReverseString(text,filter);
-                tvAnagram.setText(anagramText);
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        final EditText etText = findViewById(R.id.et_text);
+        final EditText etFilter = findViewById(R.id.et_filter);
 
+        if(etText.getText().toString().length() == 0) {
+            mAnagramTv.setText(R.string.empty_text);
+        } else {
+            mAnagramTv.setText(Reverse.getReverseString(
+                    etText.getText().toString(),
+                    etFilter.getText().toString()));
+        }
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(KEY_ANAGRAM, anagramText);
+        outState.putString(KEY_ANAGRAM, mAnagramTv.getText().toString());
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        anagramText = savedInstanceState.getString(KEY_ANAGRAM);
-        tvAnagram.setText(anagramText);
-
+        mAnagramTv.setText(savedInstanceState.getString(KEY_ANAGRAM));
     }
 }

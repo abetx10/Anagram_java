@@ -5,4 +5,6 @@
     <string name="anagram">Here must be your anagram</string>
     <string name="button">Convert</string>
 
+    <string name="empty_text">Here must be your anagram</string>
+
 </resources>
