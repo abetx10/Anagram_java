@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final EditText etText = findViewById(R.id.et_text);
         final EditText etFilter = findViewById(R.id.et_filter);
 
-        if(etText.getText().toString().length() == 0) {
+        if (etText.getText().toString().isEmpty()) {
             mAnagramTv.setText(R.string.empty_text);
         } else {
-            mAnagramTv.setText(Reverse.getReverseString(
+            mAnagramTv.setText(StringUtils.getReverseString(
                     etText.getText().toString(),
                     etFilter.getText().toString()));
         }

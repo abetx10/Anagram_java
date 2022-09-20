@@ -2,9 +2,7 @@
     <string name="app_name">Anagram</string>
     <string name="text">Enter text for anagram</string>
     <string name="filter">Enter symbols to ignore</string>
-    <string name="anagram">Here must be your anagram</string>
     <string name="button">Convert</string>
-
     <string name="empty_text">Here must be your anagram</string>
 
 </resources>
