@@ -8,19 +8,21 @@ public final class StringUtils {
         StringBuilder result = new StringBuilder();
         String resultWord = "";
         for (String word : text.split(" ")) {
-            resultWord = reverseWord(word.toCharArray(), textFilter.toCharArray()) + " ";
+            resultWord = reverseWord(word, textFilter) + " ";
             result.append(resultWord);
         }
         return result.toString().trim();
     }
 
-    public static String reverseWord(char[] text, char[] textFilter) {
+    public static String reverseWord(String word, String textFilter) {
+        char[] text = word.toCharArray();
+        char[] filter = textFilter.toCharArray();
         int right = text.length - 1, left = 0;
 
         while (left < right) {
-            if (isCharacterIgnored(text[left], textFilter)) {
+            if (isCharacterIgnored(text[left], filter)) {
                 left++;
-            } else if (isCharacterIgnored(text[right], textFilter)) {
+            } else if (isCharacterIgnored(text[right], filter)) {
                 right--;
             } else {
                 char tmp = text[left];

@@ -1,41 +1,50 @@
 package com.example.anagram_java;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 class StringUtilsTest {
     @Test
-    void isTextReversedWithFilter(){
-        StringUtils text = new StringUtils();
-        assertEquals("dexdnimoF oocl 7/42", text.getReverseString("Foxminded cool 24/7", "xl"));
+    void isTextReversedWithFilter() {
+        assertEquals("dexdnimoF oocl 7/42", StringUtils.getReverseString("Foxminded cool 24/7", "xl"));
+        assertEquals("dcba hgfe", StringUtils.getReverseString("abcd efgh", "xl"));
+        assertEquals("dcb1a hgfle", StringUtils.getReverseString("a1bcd efglh", "xl"));
     }
 
     @Test
-    void isTextReversedWithOutFilter(){
-        StringUtils text = new StringUtils();
-        assertEquals("dednimxoF looc 24/7", text.getReverseString("Foxminded cool 24/7", ""));
+    void isTextReversedWithOutFilter() {
+        assertEquals("dednimxoF looc 24/7", StringUtils.getReverseString("Foxminded cool 24/7", ""));
+        assertEquals("dcba hgfe", StringUtils.getReverseString("abcd efgh", ""));
+        assertEquals("d1cba hgf!e", StringUtils.getReverseString("a1bcd efg!h", ""));
     }
 
     @Test
-    void isCharReversedWithFilter(){
-        StringUtils text = new StringUtils();
-        assertEquals("adcb",text.reverseWord(new char[]{'a', 'b', 'c', 'd'}, new char[]{'a'}));
+    void isWordReversedWithFilter() {
+        assertEquals("adcb", StringUtils.reverseWord("abcd", "a"));
+        assertEquals("dexdnimoF", StringUtils.reverseWord("Foxminded", "xl"));
+        assertEquals("hgfe", StringUtils.reverseWord("efgh", "xl"));
     }
 
     @Test
-    void isCharReversedWithOutFilter(){
-        StringUtils text = new StringUtils();
-        assertEquals("1dcb",text.reverseWord(new char[]{'1', 'b', 'c', 'd'}, new char[]{}));
+    void isWordReversedWithOutFilter() {
+        assertEquals("hgfe", StringUtils.reverseWord("efgh", ""));
+        assertEquals("24/7", StringUtils.reverseWord("24/7", ""));
+        assertEquals("dednimxoF", StringUtils.reverseWord("Foxminded", ""));
     }
 
     @Test
-    void isCharacterIgnoredWithFilter(){
-        StringUtils text = new StringUtils();
-        assertEquals(true,text.isCharacterIgnored('a', new char[]{'a'}));
+    void isCharacterIgnoredWithFilter() {
+        assertEquals(true, StringUtils.isCharacterIgnored('a', new char[]{'a'}));
+        assertEquals(true, StringUtils.isCharacterIgnored('F', new char[]{'F'}));
+        assertEquals(true, StringUtils.isCharacterIgnored('x', new char[]{'x'}));
     }
 
     @Test
-    void isCharacterIgnoredWithOutFilter(){
-        StringUtils text = new StringUtils();
-        assertEquals(true,text.isCharacterIgnored('1', new char[]{}));
+    void isCharacterIgnoredWithOutFilter() {
+        assertEquals(true, StringUtils.isCharacterIgnored('1', new char[]{}));
+        assertEquals(true, StringUtils.isCharacterIgnored('2', new char[]{}));
+        assertEquals(true, StringUtils.isCharacterIgnored('0', new char[]{}));
+        assertEquals(true, StringUtils.isCharacterIgnored('/', new char[]{}));
     }
 }
