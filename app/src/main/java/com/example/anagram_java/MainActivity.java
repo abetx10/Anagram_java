@@ -18,23 +18,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btConvert = findViewById(R.id.btConvert);
+        Button mConvertBt = findViewById(R.id.btConvert);
         mAnagramTv = findViewById(R.id.tv_anagram);
 
-        btConvert.setOnClickListener(this);
+        mConvertBt.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        final EditText etText = findViewById(R.id.et_text);
-        final EditText etFilter = findViewById(R.id.et_filter);
+        final EditText mTextEt = findViewById(R.id.et_text);
+        final EditText mFilterEt = findViewById(R.id.et_filter);
 
-        if (etText.getText().toString().isEmpty()) {
+        if (mTextEt.getText().toString().isEmpty()) {
             mAnagramTv.setText(R.string.empty_text);
         } else {
             mAnagramTv.setText(StringUtils.getReverseString(
-                    etText.getText().toString(),
-                    etFilter.getText().toString()));
+                    mTextEt.getText().toString(),
+                    mFilterEt.getText().toString()));
         }
     }
 
