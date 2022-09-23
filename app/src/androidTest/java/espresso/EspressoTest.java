@@ -30,7 +30,7 @@ public class EspressoTest {
         onView(withId(R.id.et_text)).perform(ViewActions.typeText("Foxminded cool 24/7"));
         onView(withId(R.id.et_filter)).perform(ViewActions.typeText("xl"));
         Espresso.closeSoftKeyboard();
-        onView(withId(R.id.btConvert)).perform(click());
+        onView(withId(R.id.bt_convert)).perform(click());
         onView(withId(R.id.tv_anagram)).check(matches(withText("dexdnimoF oocl 7/42")));
     }
 }
