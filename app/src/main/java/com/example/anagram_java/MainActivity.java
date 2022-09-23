@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button mConvertBt = findViewById(R.id.btConvert);
+        Button mConvertBt = findViewById(R.id.bt_convert);
         mAnagramTv = findViewById(R.id.tv_anagram);
 
         mConvertBt.setOnClickListener(this);

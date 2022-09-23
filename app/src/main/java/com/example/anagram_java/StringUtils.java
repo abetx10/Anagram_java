@@ -25,7 +25,7 @@ public final class StringUtils {
             } else if (isCharacterIgnored(text[right], filter)) {
                 right--;
             } else {
-                char tmp = text[left];
+               final char tmp = text[left];
                 text[left] = text[right];
                 text[right] = tmp;
                 left++;
