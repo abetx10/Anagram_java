@@ -1,6 +1,10 @@
 package com.example.anagram_java;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +14,7 @@ class StringUtilsTest {
         assertEquals("dexdnimoF oocl 7/42", StringUtils.getReverseString("Foxminded cool 24/7", "xl"));
         assertEquals("dcba hgfe", StringUtils.getReverseString("abcd efgh", "xl"));
         assertEquals("dcb1a hgfle", StringUtils.getReverseString("a1bcd efglh", "xl"));
+        assertNotNull(StringUtils.getReverseString("a1bcd efglh", "xl"));
     }
 
     @Test
@@ -17,6 +22,7 @@ class StringUtilsTest {
         assertEquals("dednimxoF looc 24/7", StringUtils.getReverseString("Foxminded cool 24/7", ""));
         assertEquals("dcba hgfe", StringUtils.getReverseString("abcd efgh", ""));
         assertEquals("d1cba hgf!e", StringUtils.getReverseString("a1bcd efg!h", ""));
+        assertFalse(("d1cba hgfe").equals(StringUtils.getReverseString("a1bcd efg!h", "")));
     }
 
     @Test
@@ -24,6 +30,7 @@ class StringUtilsTest {
         assertEquals("adcb", StringUtils.reverseWord("abcd", "a"));
         assertEquals("dexdnimoF", StringUtils.reverseWord("Foxminded", "xl"));
         assertEquals("hgfe", StringUtils.reverseWord("efgh", "xl"));
+        assertTrue(("hgfe").equals(StringUtils.reverseWord("efgh", "xl")));
     }
 
     @Test
@@ -31,6 +38,7 @@ class StringUtilsTest {
         assertEquals("hgfe", StringUtils.reverseWord("efgh", ""));
         assertEquals("24/7", StringUtils.reverseWord("24/7", ""));
         assertEquals("dednimxoF", StringUtils.reverseWord("Foxminded", ""));
+        assertNotSame(("dednimxoF"), StringUtils.reverseWord("Foxminded", ""));
     }
 
     @Test
@@ -38,6 +46,7 @@ class StringUtilsTest {
         assertEquals(true, StringUtils.isCharacterIgnored('a', new char[]{'a'}));
         assertEquals(true, StringUtils.isCharacterIgnored('F', new char[]{'F'}));
         assertEquals(true, StringUtils.isCharacterIgnored('x', new char[]{'x'}));
+        assertNotNull(StringUtils.isCharacterIgnored('x', new char[]{'x'}));
     }
 
     @Test
